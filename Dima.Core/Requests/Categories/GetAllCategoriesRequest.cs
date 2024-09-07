@@ -1,7 +1,6 @@
-﻿namespace Dima.Core.Requests.Categories
-{
-    public class GetAllCategoriesRequest : PagedRequest
-    {
+﻿namespace Dima.Core.Requests.Categories;
 
-    }
+public class GetAllCategoriesRequest : PagedRequest
+{
+
 }

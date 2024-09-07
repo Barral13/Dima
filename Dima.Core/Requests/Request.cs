@@ -1,7 +1,6 @@
-﻿namespace Dima.Core.Requests
+﻿namespace Dima.Core.Requests;
+
+public abstract class Request
 {
-    public abstract class Request
-    {
-        public string UserId { get; set; } = string.Empty;
-    }
+    public string UserId { get; set; } = string.Empty;
 }

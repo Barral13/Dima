@@ -1,8 +1,7 @@
-﻿namespace Dima.Core.Enums
+﻿namespace Dima.Core.Enums;
+
+public enum ETransactionType
 {
-    public enum ETransactionType
-    {
-        Deposit = 1,
-        Withdraw = 2
-    }
+    Deposit = 1,
+    Withdraw = 2
 }
