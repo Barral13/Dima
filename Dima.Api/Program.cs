@@ -1,4 +1,6 @@
 using Dima.Api.Data;
+using Dima.Api.Handlers;
+using Dima.Core.Handlers;
 using Dima.Core.Models;
 using Dima.Core.Requests.Categories;
 using Dima.Core.Responses;
@@ -10,17 +12,16 @@ var cnnStr = builder
     .Configuration
     .GetConnectionString("DefaultConnection") ?? string.Empty;
 
-builder.Services.AddDbContext<AppDbContext>( x =>
-    {
-        x.UseSqlServer(cnnStr);
-    });
+builder.Services.AddDbContext<AppDbContext>(
+    x => { x.UseSqlServer(cnnStr); });
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(x => 
 {
     x.CustomSchemaIds(n => n.FullName);
 });
-builder.Services.AddTransient<Handler>();
+builder.Services
+    .AddTransient<ICategoryHandler, CategoryHandler>();
 
 var app = builder.Build();
 
@@ -29,11 +30,11 @@ app.UseSwaggerUI();
 
 app.MapPost(
     "/v1/categories",
-        (CreateCategoryRequest request,
-        Handler handler) 
-        => handler.Handle(request))
-            .WithName("Categories: Create")
-            .WithSummary("Cria uma nova categoria")
-            .Produces<Response<Category>>();
+        (CreateCategoryRequest request, 
+        ICategoryHandler handler) 
+    => handler.CreateAsync(request))
+        .WithName("Categories: Create")
+        .WithSummary("Cria uma nova categoria")
+        .Produces<Response<Category>>();
 
 app.Run();
