@@ -1,4 +1,5 @@
-﻿namespace Dima.Core.Requests.Categories;
+﻿
+namespace Dima.Core.Requests.Categories;
 
 public class DeleteCategoryRequest : Request
 {
