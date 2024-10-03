@@ -14,22 +14,25 @@ var cnnStr = builder
     .GetConnectionString("DefaultConnection") ?? string.Empty;
 
 builder.Services.AddDbContext<AppDbContext>(
-    x => { x.UseSqlServer(cnnStr); });
+    x => { 
+        x.UseSqlServer(cnnStr); 
+    });
 
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(x => 
+builder.Services.AddSwaggerGen(x =>
 {
     x.CustomSchemaIds(n => n.FullName);
 });
-builder.Services
-    .AddTransient<ICategoryHandler, CategoryHandler>();
+
+// Registrar o Handler como serviço
+builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
 
 var app = builder.Build();
 
 app.MapSwagger();
 app.UseSwaggerUI();
 
-app.MapGet("/", () => new { message = "OK" });
+app.MapGet("/", () => new { message = "Ok" });
 app.MapEndpoints();
 
 app.Run();

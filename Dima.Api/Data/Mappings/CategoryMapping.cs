@@ -6,7 +6,8 @@ namespace Dima.Api.Data.Mappings;
 
 public class CategoryMapping : IEntityTypeConfiguration<Category>
 {
-    public void Configure(EntityTypeBuilder<Category> builder)
+    public void Configure(
+        EntityTypeBuilder<Category> builder)
     {
         builder.ToTable("Category");
 

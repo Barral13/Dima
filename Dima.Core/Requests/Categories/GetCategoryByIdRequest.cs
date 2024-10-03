@@ -2,5 +2,5 @@
 
 public class GetCategoryByIdRequest : Request
 {
-    public int Id { get; set; }
+    public long Id { get; set; }
 }

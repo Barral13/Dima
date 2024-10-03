@@ -1,17 +1,15 @@
 ﻿using Dima.Api.Common.Api;
 using Dima.Api.Endpoints.Categories;
-using Dima.Core.Models;
 
 namespace Dima.Api.Endpoints;
 
 public static class Endpoint
 {
-    // Extension Method
     public static void MapEndpoints(this WebApplication app)
     {
-        var endpoints = app.MapGroup("");
+        var endpoints = app.MapGroup("v1");
 
-        endpoints.MapGroup("v1/categories")
+        endpoints.MapGroup("categories")
             .WithTags("Categories")
             //.RequireAuthorization()
             .MapEndpoint<CreateCategoryEndpoint>();

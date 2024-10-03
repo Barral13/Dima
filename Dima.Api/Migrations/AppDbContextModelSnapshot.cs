@@ -24,11 +24,11 @@ namespace Dima.Api.Migrations
 
             modelBuilder.Entity("Dima.Core.Models.Category", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<string>("Description")
                         .HasMaxLength(255)
@@ -51,17 +51,17 @@ namespace Dima.Api.Migrations
 
             modelBuilder.Entity("Dima.Core.Models.Transaction", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("bigint");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<long>("Id"));
 
                     b.Property<decimal>("Amount")
                         .HasColumnType("MONEY");
 
-                    b.Property<int>("CategoryId")
-                        .HasColumnType("int");
+                    b.Property<long>("CategoryId")
+                        .HasColumnType("bigint");
 
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
