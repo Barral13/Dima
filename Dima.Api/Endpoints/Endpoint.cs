@@ -7,12 +7,16 @@ public static class Endpoint
 {
     public static void MapEndpoints(this WebApplication app)
     {
-        var endpoints = app.MapGroup("v1");
+        var endpoints = app.MapGroup("");
 
-        endpoints.MapGroup("categories")
+        endpoints.MapGroup("v1/categories")
             .WithTags("Categories")
             //.RequireAuthorization()
-            .MapEndpoint<CreateCategoryEndpoint>();
+            .MapEndpoint<CreateCategoryEndpoint>()
+            .MapEndpoint<UpdateCategoryEndpoint>()
+            .MapEndpoint<DeleteCategoryEndpoint>()
+            .MapEndpoint<GetCategoryByIdEndpoint>()
+            .MapEndpoint<GetAllCategoriesEndpoint>();
     }
 
     private static IEndpointRouteBuilder MapEndpoint<TEndpoint>(this IEndpointRouteBuilder app)
