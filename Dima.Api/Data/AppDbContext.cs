@@ -15,5 +15,4 @@ public class AppDbContext(DbContextOptions<AppDbContext> options)
     {
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
     }
-
 }

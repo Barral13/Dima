@@ -24,7 +24,7 @@ builder.Services.AddSwaggerGen(x =>
     x.CustomSchemaIds(n => n.FullName);
 });
 
-// Registrar o Handler como serviço
+// Registrar o Handler como serviï¿½o
 builder.Services.AddTransient<ICategoryHandler, CategoryHandler>();
 
 var app = builder.Build();
