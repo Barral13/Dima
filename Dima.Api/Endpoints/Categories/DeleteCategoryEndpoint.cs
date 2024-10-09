@@ -11,8 +11,8 @@ public class DeleteCategoryEndpoint : IEndpoint
     public static void Map(IEndpointRouteBuilder app)
     => app.MapDelete("/{id}", HandleAsync)
         .WithName("Categories: Delete")
-        .WithSummary("Exclui uma nova categoria")
-        .WithDescription("Exclui uma nova categoria")
+        .WithSummary("Exclui uma categoria")
+        .WithDescription("Exclui uma categoria")
         .WithOrder(3)
         .Produces<Response<Category?>>();
 
@@ -22,7 +22,7 @@ public class DeleteCategoryEndpoint : IEndpoint
     {
         var request = new DeleteCategoryRequest
         {
-            UserId = "Test02",
+            UserId = "barral13",
             Id = id
         };
 
