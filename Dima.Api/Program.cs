@@ -1,10 +1,8 @@
 using Dima.Api.Data;
 using Dima.Api.Endpoints;
 using Dima.Api.Handlers;
+using Dima.Api.Models;
 using Dima.Core.Handlers;
-using Dima.Core.Models;
-using Dima.Core.Requests.Categories;
-using Dima.Core.Responses;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -29,11 +27,20 @@ builder.Services.AddDbContext<AppDbContext>(
     x => { x.UseSqlServer(cnnStr); });
 
 builder.Services
+    .AddIdentityCore<User>()
+    .AddRoles<IdentityRole<long>>()
+    .AddEntityFrameworkStores<AppDbContext>()
+    .AddApiEndpoints();
+
+builder.Services
     .AddTransient<ICategoryHandler, CategoryHandler>();
 builder.Services
     .AddTransient<ITransactionHandler, TransactionHandler>();
 
 var app = builder.Build();
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapSwagger();
 app.UseSwaggerUI();
